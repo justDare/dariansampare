@@ -5,7 +5,7 @@ import { StaticImage } from "gatsby-plugin-image"
 import { Layout } from "components/layout/Layout"
 import Seo from "components/layout/seo"
 import { PreLoader } from "components/PreLoader"
-import { Banner, ChoosePath } from "components/home"
+import { Banner, ChoosePath, YouTubeFeed } from "components/home"
 
 const IndexPage = () => {
   const [showPreloader, setShowPreloader] = React.useState(true)
@@ -24,6 +24,7 @@ const IndexPage = () => {
       <Seo title="Home" />
       <Banner />
       <ChoosePath />
+      <YouTubeFeed />
       <h1>Hi people</h1>
       <p>Welcome to your new Gatsby site.</p>
       <p>Now go build something great.</p>
