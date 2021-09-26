@@ -2,6 +2,14 @@ import axios from "axios"
 
 import { promiseHandler } from "utils/async"
 
+export interface VideoData {
+  title: string
+  commentCount: string
+  thumbnail: string
+  viewCount: string
+  likeCount: string
+}
+
 export class YouTubeService {
   private apiKey: string
   private youTubeSearchEndpoint: string
@@ -31,7 +39,9 @@ export class YouTubeService {
     return [results?.data.items.map((item: any) => item.id.videoId), null]
   }
 
-  public async getMostPopularVideos(): Promise<[null, Error] | [[any], null]> {
+  public async getMostPopularVideos(): Promise<
+    [null, Error] | [[VideoData], null]
+  > {
     const [videoIds, videoIdsError] = await this.getMostPopularVideoIds()
     if (videoIdsError) {
       return [null, videoIdsError]
@@ -52,6 +62,15 @@ export class YouTubeService {
      * map content, need a thumbnail, title, likes count, views count, comments counts
      */
 
-    return [results?.data.items || [], null]
+    return [
+      results?.data.items.map(({ snippet, statistics }: any) => ({
+        title: snippet.title,
+        thumbnail: snippet.thumbnails.maxres.url,
+        viewCount: statistics.viewCount,
+        commentCount: statistics.commentCount,
+        likeCount: statistics.likeCount,
+      })) || [],
+      null,
+    ]
   }
 }

@@ -4,7 +4,7 @@ import { StaticImage } from "gatsby-plugin-image"
 
 import { Layout } from "components/layout/Layout"
 import Seo from "components/layout/seo"
-import { PreLoader } from "components/PreLoader"
+import { PreLoader } from "components/common/PreLoader"
 import { Banner, ChoosePath, YouTubeFeed } from "components/home"
 
 const IndexPage = () => {
