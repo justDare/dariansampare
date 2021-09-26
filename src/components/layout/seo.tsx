@@ -6,12 +6,27 @@
  */
 
 import * as React from "react"
-import PropTypes from "prop-types"
-import { Helmet } from "react-helmet"
+import { Helmet, HelmetDatum } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function Seo({ description, lang, meta, title }) {
-  const { site } = useStaticQuery(
+interface Props {
+  description?: string
+  lang?: string
+  meta?:
+    | React.DetailedHTMLProps<
+        React.MetaHTMLAttributes<HTMLMetaElement>,
+        HTMLMetaElement
+      >[]
+    | undefined
+  title: string
+}
+
+const Seo: React.FC<Props> = ({ description, lang, meta = [], title }) => {
+  const { site } = useStaticQuery<{
+    site: {
+      siteMetadata: { title: string; description: string; author: string }
+    }
+  }>(
     graphql`
       query {
         site {
@@ -34,7 +49,7 @@ function Seo({ description, lang, meta, title }) {
         lang,
       }}
       title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
+      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : undefined}
       meta={[
         {
           name: `description`,
@@ -68,22 +83,10 @@ function Seo({ description, lang, meta, title }) {
           name: `twitter:description`,
           content: metaDescription,
         },
-      ].concat(meta)}
+        ...meta,
+      ]}
     />
   )
-}
-
-Seo.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
-}
-
-Seo.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
 }
 
 export default Seo

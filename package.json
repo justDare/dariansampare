@@ -5,6 +5,11 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@chakra-ui/gatsby-plugin": "^2.0.1",
+    "@chakra-ui/react": "^1.6.8",
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
+    "framer-motion": "^4.1.17",
     "gatsby": "^3.13.1",
     "gatsby-plugin-image": "^1.13.0",
     "gatsby-plugin-manifest": "^3.13.0",
@@ -19,6 +24,8 @@
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
+    "@types/react-helmet": "^6.1.2",
+    "gatsby-plugin-root-import": "^2.0.7",
     "prettier": "2.4.1"
   },
   "keywords": [
