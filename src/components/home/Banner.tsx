@@ -4,7 +4,7 @@ import { Flex, Container, Box } from "@chakra-ui/react"
 export const Banner = () => {
   return (
     <Box>
-      <Container maxWidth="container.xxl">Banner!</Container>
+      <Container maxWidth="container.xl">Banner!</Container>
     </Box>
   )
 }

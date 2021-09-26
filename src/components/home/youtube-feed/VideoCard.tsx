@@ -28,6 +28,7 @@ export const VideoCard: React.FC<Props> = ({
           borderRadius="lg"
           shadow="lg"
           overflow="hidden"
+          // backgroundColor="current"
         >
           <Image
             src={thumbnail}

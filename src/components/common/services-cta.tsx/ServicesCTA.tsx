@@ -9,7 +9,7 @@ interface Props {
 export const ServicesCTA: React.FC<Props> = ({ title, description }) => {
   return (
     <Box minHeight="600px">
-      <Container maxWidth="container.xxl">
+      <Container maxWidth="container.xl">
         <Flex>
           <Box>
             <Heading>{title}</Heading>

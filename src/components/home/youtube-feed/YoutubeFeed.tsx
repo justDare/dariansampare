@@ -43,9 +43,9 @@ export const YouTubeFeed = () => {
   }
 
   return (
-    <Container maxWidth="container.xx">
+    <Container maxWidth="container.xl">
       <Heading>Find me on YouTube</Heading>
-      <SimpleGrid minChildWidth="240px" spacing="4">
+      <SimpleGrid minChildWidth="240px" spacing="8">
         <VideoCard
           // isLoading={true}
           title={testData.title}
