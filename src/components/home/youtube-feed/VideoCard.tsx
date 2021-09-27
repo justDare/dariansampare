@@ -17,7 +17,6 @@ export const VideoCard: React.FC<Props> = ({
   likeCount,
 }) => {
   const [imageLoaded, setImageLoaded] = React.useState(false)
-  console.log(imageLoaded)
 
   return (
     <>
