@@ -26,15 +26,14 @@ export const About = () => {
   return (
     <Flex minHeight="600px" position="relative" alignItems="center">
       <Box
-        backgroundColor={isLightTheme ? "gray.50" : "gray.700"}
+        backgroundColor={isLightTheme ? "gray.100" : "gray.700"}
         height="100%"
         width="80%"
         position="absolute"
         borderRightRadius="3xl"
-        zIndex="-1"
         right={boxPositionRight}
       />
-      <Container maxWidth="container.xl" height="100%">
+      <Container maxWidth="container.xl" height="100%" zIndex="1">
         <Box>
           <Text
             color="gray.400"

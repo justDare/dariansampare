@@ -2,9 +2,9 @@ import { extendTheme } from "@chakra-ui/react"
 import type { Styles } from "@chakra-ui/theme-tools"
 import { mode } from "@chakra-ui/theme-tools"
 
-const colors = {
-  primary: "rebeccapurple",
-}
+import { Button } from "theme/components"
+
+const colors = {}
 
 const fonts = {
   heading: "Plus Jakarta Sans",
@@ -14,15 +14,21 @@ const fonts = {
 // setup light/dark mode global defaults
 const styles: Styles = {
   global: props => ({
-    body: {
+    "html, body": {
       color: mode("gray.800", "whiteAlpha.900")(props),
       bg: mode("white", "gray.800")(props),
+      strong: {
+        fontWeight: "extrabold",
+      },
     },
   }),
 }
 
 export const theme = extendTheme({
-  styles,
   colors,
   fonts,
+  styles,
+  components: {
+    Button,
+  },
 })
