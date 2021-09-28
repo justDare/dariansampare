@@ -3,8 +3,8 @@ import { Container, Heading, SimpleGrid } from "@chakra-ui/react"
 
 import { VideoCard } from "components/home/youtube-feed/VideoCard"
 import { VideoLoading } from "components/home/youtube-feed/VideoLoading"
-import { YouTubeService, VideoData } from "services/youtube"
-import { useYouTubeStore, getVideos } from "global-state/youtubeStore"
+import { YouTubeService } from "services/youtube"
+import { useYouTubeStore } from "global-state/youtubeStore"
 
 export const YouTubeFeed = () => {
   const youTubeService = new YouTubeService()

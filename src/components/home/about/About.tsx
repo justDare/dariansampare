@@ -51,7 +51,7 @@ export const About = () => {
           >
             A bit about Darian
           </Heading>
-          <Text maxWidth={summaryWidth}>
+          <Text maxWidth={summaryWidth} fontWeight="medium">
             I'm a Full Stack Developer who's been building industry utilized
             applications since my second year of college. Since then, I've
             worked in startups, founded a couple myself, and taken on freelance

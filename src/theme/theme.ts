@@ -7,8 +7,8 @@ import { Button } from "theme/components"
 const colors = {}
 
 const fonts = {
-  heading: "Plus Jakarta Sans",
-  body: "Plus Jakarta Sans",
+  heading: "'Barlow', sans-serif",
+  body: "'Barlow', sans-serif",
 }
 
 // setup light/dark mode global defaults
