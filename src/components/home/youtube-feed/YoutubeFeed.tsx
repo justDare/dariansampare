@@ -4,7 +4,7 @@ import { Container, Heading, SimpleGrid } from "@chakra-ui/react"
 import { VideoCard } from "components/home/youtube-feed/VideoCard"
 import { VideoLoading } from "components/home/youtube-feed/VideoLoading"
 import { YouTubeService } from "services/youtube"
-import { useYouTubeStore } from "global-state/youtubeStore"
+import { useYouTubeStore } from "global-state/youTubeStore"
 
 export const YouTubeFeed = () => {
   const youTubeService = new YouTubeService()
@@ -36,8 +36,10 @@ export const YouTubeFeed = () => {
   const isLoading = !videos.length
 
   return (
-    <Container maxWidth="container.xl">
-      <Heading>Find me on YouTube</Heading>
+    <Container maxWidth="container.xl" paddingY="24">
+      <Heading size="2xl" fontWeight="extrabold" marginBottom="8">
+        Find me on YouTube
+      </Heading>
       <SimpleGrid minChildWidth="240px" spacing="8">
         {isLoading && [...Array(3)].map((e, i) => <VideoLoading />)}
         {!isLoading &&
