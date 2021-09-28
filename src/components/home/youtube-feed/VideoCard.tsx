@@ -1,12 +1,22 @@
 import React from "react"
-import { Flex, Box, Image, Text, Icon, Spacer } from "@chakra-ui/react"
-import { FaHeart, FaEye, FaRegComment, FaComments } from "react-icons/fa"
+import {
+  Flex,
+  Box,
+  Image,
+  Text,
+  Icon,
+  Spacer,
+  Link,
+  Button,
+} from "@chakra-ui/react"
+import { FaHeart, FaEye, FaComments } from "react-icons/fa"
 
 import { VideoData } from "services/youtube"
 
 interface Props extends VideoData {}
 
 export const VideoCard: React.FC<Props> = ({
+  id,
   title,
   thumbnail,
   viewCount,
@@ -38,20 +48,25 @@ export const VideoCard: React.FC<Props> = ({
           {title}
         </Text>
         <Spacer />
-        <Flex>
-          <Flex alignItems="center" marginRight="4">
-            <Icon as={FaEye} marginRight="4" />
-            <Text marginBottom="0">{viewCount}</Text>
+        <div>
+          <Flex marginBottom="4" flexWrap="wrap">
+            <Flex alignItems="center" marginRight="8">
+              <Icon as={FaEye} marginRight="4" />
+              <Text marginBottom="0">{viewCount}</Text>
+            </Flex>
+            <Flex alignItems="center" marginRight="8">
+              <Icon as={FaHeart} marginRight="4" />
+              <Text marginBottom="0">{likeCount}</Text>
+            </Flex>
+            <Flex alignItems="center">
+              <Icon as={FaComments} marginRight="4" />
+              <Text marginBottom="0">{commentCount}</Text>
+            </Flex>
           </Flex>
-          <Flex alignItems="center" marginRight="4">
-            <Icon as={FaHeart} marginRight="4" />
-            <Text marginBottom="0">{likeCount}</Text>
-          </Flex>
-          <Flex alignItems="center">
-            <Icon as={FaComments} marginRight="4" />
-            <Text marginBottom="0">{commentCount}</Text>
-          </Flex>
-        </Flex>
+          <Link href={`https://www.youtube.com/watch?v=${id}`} target="_blank">
+            <Button>Watch</Button>
+          </Link>
+        </div>
       </Flex>
     </Flex>
   )

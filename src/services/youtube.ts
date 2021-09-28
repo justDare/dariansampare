@@ -3,6 +3,7 @@ import axios from "axios"
 import { promiseHandler } from "utils/async"
 
 export interface VideoData {
+  id: string
   title: string
   commentCount: string
   thumbnail: string
@@ -36,6 +37,7 @@ export class YouTubeService {
     if (error) {
       return [null, error]
     }
+
     return [results?.data.items.map((item: any) => item.id.videoId), null]
   }
 
@@ -47,7 +49,6 @@ export class YouTubeService {
       return [null, videoIdsError]
     }
 
-    const videoIdsQueryParam = (videoIds || []).join(",")
     const [results, error] = await promiseHandler(
       axios.get(
         `${this.youTubeVideosEndpoint}&id=${videoIds}&part=statistics,snippet`
@@ -57,13 +58,11 @@ export class YouTubeService {
       return [null, error]
     }
 
-    /**
-     * TODO
-     * map content, need a thumbnail, title, likes count, views count, comments counts
-     */
+    console.log(results?.data)
 
     return [
-      results?.data.items.map(({ snippet, statistics }: any) => ({
+      results?.data.items.map(({ id, snippet, statistics }: any) => ({
+        id,
         title: snippet.title,
         thumbnail: snippet.thumbnails.maxres.url,
         viewCount: statistics.viewCount,

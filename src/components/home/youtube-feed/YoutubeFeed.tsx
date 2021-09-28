@@ -24,10 +24,10 @@ export const YouTubeFeed = () => {
   }
 
   React.useEffect(() => {
-    if (!videos.length) {
-      getYouTubeFeed()
-    }
-  }, [videos])
+    // if (!videos.length) {
+    getYouTubeFeed()
+    // }
+  }, [])
 
   if (error) {
     return null
@@ -36,7 +36,7 @@ export const YouTubeFeed = () => {
   const isLoading = !videos.length
 
   return (
-    <Container maxWidth="container.xl" paddingY="24">
+    <Container maxWidth="container.xl" paddingY="32">
       <Heading size="2xl" fontWeight="extrabold" marginBottom="8">
         Find me on YouTube
       </Heading>
@@ -45,7 +45,8 @@ export const YouTubeFeed = () => {
         {!isLoading &&
           videos.map(video => (
             <VideoCard
-              key={video.title}
+              key={video.id}
+              id={video.id}
               title={video.title}
               thumbnail={video.thumbnail}
               viewCount={video.viewCount}
