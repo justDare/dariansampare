@@ -24,10 +24,10 @@ export const YouTubeFeed = () => {
   }
 
   React.useEffect(() => {
-    // if (!videos.length) {
-    getYouTubeFeed()
-    // }
-  }, [])
+    if (!videos.length) {
+      getYouTubeFeed()
+    }
+  }, [videos])
 
   if (error) {
     return null
