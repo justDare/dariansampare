@@ -26,7 +26,7 @@ export const About = () => {
   return (
     <Flex minHeight="600px" position="relative" alignItems="center">
       <Box
-        backgroundColor={isLightTheme ? "gray.100" : "gray.700"}
+        backgroundColor={isLightTheme ? "gray.50" : "gray.700"}
         height="100%"
         width="80%"
         position="absolute"
