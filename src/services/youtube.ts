@@ -11,10 +11,17 @@ export interface VideoData {
   likeCount: string
 }
 
+export interface ChannelInfo {
+  viewCount: string
+  subscriberCount: string
+  videoCount: string
+}
+
 export class YouTubeService {
   private apiKey: string
   private youTubeSearchEndpoint: string
   private youTubeVideosEndpoint: string
+  private youTubeChannelsEndpoint: string
   private channelId = "UC8YPqDf6j9YA7ckEIYYytKA"
 
   constructor() {
@@ -24,6 +31,7 @@ export class YouTubeService {
     this.apiKey = process.env.GATSBY_YOUTUBE_API_KEY
     this.youTubeSearchEndpoint = `https://www.googleapis.com/youtube/v3/search?key=${this.apiKey}&channelId=${this.channelId}`
     this.youTubeVideosEndpoint = `https://www.googleapis.com/youtube/v3/videos?key=${this.apiKey}`
+    this.youTubeChannelsEndpoint = `https://www.googleapis.com/youtube/v3/channels?key=${this.apiKey}&id=${this.channelId}`
   }
 
   private async getMostPopularVideoIds(): Promise<
@@ -58,8 +66,6 @@ export class YouTubeService {
       return [null, error]
     }
 
-    console.log(results?.data)
-
     return [
       results?.data.items.map(({ id, snippet, statistics }: any) => ({
         id,
@@ -69,6 +75,27 @@ export class YouTubeService {
         commentCount: statistics.commentCount,
         likeCount: statistics.likeCount,
       })) || [],
+      null,
+    ]
+  }
+
+  public async getChannelInfo(): Promise<[ChannelInfo, null] | [null, Error]> {
+    const [results, error] = await promiseHandler(
+      axios.get(`${this.youTubeChannelsEndpoint}&part=statistics`)
+    )
+    if (error) {
+      return [null, error]
+    }
+
+    const myChannel = results?.data.items[0]
+    const { viewCount, subscriberCount, videoCount } = myChannel.statistics
+
+    return [
+      {
+        viewCount: viewCount,
+        subscriberCount: subscriberCount,
+        videoCount: videoCount,
+      },
       null,
     ]
   }
